@@ -19,6 +19,9 @@ podAnnotations: {}  # Annotations to be added to operator pod
 serviceAccount:
   annotations: {} # Annotations to be added to the service account
 
+# -- Namespace to observe. (Default watches all namespaces)
+namespace: ""
+
 gpg:
   enabled: false  # If `true` GCP secret will be created from provided value and mounted as environment variable
   secret1: gpg1  # Name of the secret to create - will override default secret name if specified

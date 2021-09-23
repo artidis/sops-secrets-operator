@@ -33,6 +33,9 @@ serviceAccount:
 # -- Requeue failed reconciliation in minutes (min 1). (default 5)
 requeueAfter: 5
 
+# -- Namespace to observe. (Default watches all namespaces)
+namespace: ""
+
 # -- Paths to a kubeconfig. Only required if out-of-cluster.
 kubeconfig:
   enabled: false

@@ -47,6 +47,7 @@ func main() {
 	var enableLeaderElection bool
 	var probeAddr string
 	var requeueAfter int64
+	var namespace string
 
 	flag.StringVar(&metricsAddr, "metrics-bind-address", ":8080", "The address the metric endpoint binds to.")
 	flag.StringVar(&probeAddr, "health-probe-bind-address", ":8081", "The address the probe endpoint binds to.")
@@ -54,6 +55,7 @@ func main() {
 		"Enable leader election for controller manager. "+
 			"Enabling this will ensure there is only one active controller manager.")
 	flag.Int64Var(&requeueAfter, "requeue-decrypt-after", 5, "Requeue failed reconciliation in minutes (min 1).")
+	flag.StringVar(&namespace, "namespace", "", "Namespace to observe")
 	opts := zap.Options{
 		Development: true,
 	}
@@ -69,6 +71,7 @@ func main() {
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
 		LeaderElectionID:       "ca57d051.github.com",
+		Namespace:              namespace,
 	})
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")

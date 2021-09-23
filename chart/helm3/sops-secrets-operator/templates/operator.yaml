@@ -72,6 +72,7 @@ spec:
           # Enable leader election for controller manager. Enabling this will ensure there is only one active controller manager.
           - "--leader-elect"
           - "--requeue-decrypt-after={{ .Values.requeueAfter }}"
+          - "--namespace={{ .Values.namespace }}"
           - "--zap-encoder={{ .Values.logging.encoder }}"
           - "--zap-log-level={{ .Values.logging.level }}"
           - "--zap-stacktrace-level={{ .Values.logging.stacktraceLevel }}"
